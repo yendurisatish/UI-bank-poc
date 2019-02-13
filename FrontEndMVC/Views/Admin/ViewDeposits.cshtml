@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "ViewDeposits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+
+
+<head>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+    
+    <script src="~/Scripts/ViewDeposits.js"></script>
+
+</head>
+<body>
+    <form id="form1">
+        <table style="font-family : Arial" width="1200">
+
+
+            <tr>
+
+                <td style="height:500px;background-color:#E6E6E6;width:650px">
+                    <h2>View Deposits</h2>
+
+                    <table id="tb1" border="1">
+
+                        <tr>
+                            <th>Deposit Id</th>
+                            <th>AccountNumber</th>
+                            <th>Deposit Amount</th>
+                            <th>Duration</th>
+                            <th>Approval</th>
+                            <th>Approved Time</th>
+
+                        </tr>
+
+                    </table><br /><br />
+                    <input type="button" id="btn" value="GetDeposits" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color:#BDBDBD;text-align:center">
+                    <b>website footer</b>
+                </td>
+            </tr>
+
+
+        </table>
+
+
+    </form>
+</body>

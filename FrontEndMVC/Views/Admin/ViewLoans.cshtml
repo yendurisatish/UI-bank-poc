@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "ViewLoans";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+
+
+<head>
+    <title></title>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/ViewLoans.js"></script>
+
+
+</head>
+<body>
+    <form id="form1">
+        <table style="font-family : Arial" width="1200">
+
+
+            <tr>
+
+                <td style="height:500px;background-color:#E6E6E6;width:650px">
+                    <h2>View Loans</h2>
+                   
+                    <table id="tb1" border="1">
+                        <thead>
+                            <tr>
+                                <th>Loan Id</th>
+                                <th>AccountNumber</th>
+                                <th>Loan Amount</th>
+                                <th>Approval</th>
+                                <th>Approved Time</th>
+
+                            </tr>
+                        </thead>
+                  
+                    </table><br /><br />
+                    <input type="button" id="btn" value="GetLoans" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color:#BDBDBD;text-align:center">
+                    <b>website footer</b>
+                </td>
+            </tr>
+
+
+        </table>
+
+
+    </form>
+</body>
