@@ -8,8 +8,9 @@
             url: "http://localhost:64294/api/admin/getloans",
 
             type: "GET",
-            contentType: "application/json",
-            dataType: "json",
+            crossDomain: true,
+
+            Accept: "application/json",
 
 
             success: function (resultdata) {
@@ -27,10 +28,18 @@
                     var approvedTime = v.ApprovedTime;
 
 
-
-                    $("#tb1").append("<tr><td>" + id + "</td><td>" + accountno + "</td><td>" + amount + "</td><td>" + approval + "</td><td>" + approvedTime + "</td></tr>")
+                    var body = "<tr>";
+                    body += "<td>" + id + "</td>";
+                    body += "<td>" + accountno + "</td>";
+                    body += "<td>" + amount + "</td>";
+                    body += "<td>" + approval + "</td>";
+                    body += "<td>" + approvedTime + "</td>";
+                    body += "</tr>";
+                    $("#tb1 tbody").append(body);
+                    //$("#tb1").append("<tr><td>" + id + "</td><td>" + accountno + "</td><td>" + amount + "</td><td>" + approval + "</td><td>" + approvedTime + "</td></tr>")
 
                 });
+                $("#tb1").DataTable();
 
 
 
@@ -45,6 +54,6 @@
         });
 
     });
-    $('#tb1').DataTable();
+    
 
 });
