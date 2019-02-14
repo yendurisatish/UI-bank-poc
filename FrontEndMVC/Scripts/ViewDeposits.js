@@ -1,15 +1,15 @@
 ﻿$(document).ready(function () {
-
-    $("#btn").click(function () {
-
-        $.ajax({
+    //$("#btn").click(function () {
+    $.ajax({
+    
 
             url: "http://localhost:64294/api/admin/getdeposits",
 
             type: "GET",
-            dataType: "json",
+            crossDomain: true,
 
             Accept: "application/json",
+
 
 
             success: function (resultdata) {
@@ -27,14 +27,22 @@
 
                     var depositTime = v.DepositTime;
 
+                    var body = "<tr>";
+                    body += "<td>" + id + "</td>";
+                    body += "<td>" + amount + "</td>";
+                    body += "<td>" + approval + "</td>";
+                    body += "<td>" + duration + "</td>";
+                    body += "<td>" + accountno + "</td>";
+                    body += "<td>" + depositTime + "</td>";
+                    body += "</tr>";
+                    $("#tb1 tbody").append(body);
 
 
-
-                    $("#tb1").append("<tr><td>" + id + "</td><td>" + accountno + "</td><td>" + amount + "</td><td>" + duration + "</td><td>" + approval + "</td><td>" + depositTime + "</td></tr>")
+                   // $("#tb1").append("<tr><td>" + id + "</td><td>" + accountno + "</td><td>" + amount + "</td><td>" + duration + "</td><td>" + approval + "</td><td>" + depositTime + "</td></tr>")
 
                 });
 
-
+                $("#tb1").DataTable();
 
             },
 
@@ -48,4 +56,4 @@
 
     });
 
-});
+//});
