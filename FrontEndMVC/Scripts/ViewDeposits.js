@@ -29,10 +29,10 @@
 
                     var body = "<tr>";
                     body += "<td>" + id + "</td>";
-                    body += "<td>" + amount + "</td>";
-                    body += "<td>" + approval + "</td>";
-                    body += "<td>" + duration + "</td>";
                     body += "<td>" + accountno + "</td>";
+                    body += "<td>" + amount + "</td>";
+                    body += "<td>" + duration + "</td>";
+                    body += "<td>" + approval + "</td>";
                     body += "<td>" + depositTime + "</td>";
                     body += "</tr>";
                     $("#tb1 tbody").append(body);

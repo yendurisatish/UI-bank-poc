@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   
+    <title>Login Page</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/Scripts/Login.js"></script>
+    <link href="~/Content/Login%20styling.css" rel="stylesheet" />
+</head>
+<body style="background-color:cyan">
+    <div>
+        <form id="form1" >
+            <div class="logincontent">
+                <div class="loginheading">
+                    Welcome to MyBank
+                </div>
+                <label for="txtUserName">
+                    Username:
+                </label>
+                
+                <input id="txtUsername" type="text" name="Usernametxt">
+                <label for="txtPassword">
+                    Password:
+                </label>
+              
+                <input id="txtPassword" type="password" name="Passwordtxt">
+                <div class="loginremember">
+                    <p style="display: none" id="pLoginText" >
+                    </p><br />
+                    <input type="checkbox" id="chbRemember" name="chbRemember" /><label class="check"
+                                                                                        for="chbRemember">Remember me next time</label>
+
+                    <input id="Loginbtn" type="button" class="loginbtn" value="Login"/>                
+                 
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

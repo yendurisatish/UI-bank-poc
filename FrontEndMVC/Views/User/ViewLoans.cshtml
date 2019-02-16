@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "ViewLoans";
+    Layout = "~/Views/Shared/User.cshtml";
+}
+
+<!DOCTYPE html>
+<head>
+    <title></title>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+   @* <script src="~/Scripts/ViewLoans.js"></script>*@
+    <script src="~/Scripts/ViewLoanDetails.js"></script>
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+
+
+</head>
+<body>
+    <form id="form1">
+
+        <h2>View Loans</h2>
+
+        <table id="tb1" border="1">
+            <thead>
+                <tr>
+                    <th>Loan Id</th>
+                    <th>AccountNumber</th>
+                    <th>Loan Amount</th>
+                    <th>Approval</th>
+                    <th>Approved Time</th>
+
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table><br /><br />
+        @*<input type="button" id="btn" value="GetLoans" />*@
+
+
+
+    </form>
+</body>
+
+

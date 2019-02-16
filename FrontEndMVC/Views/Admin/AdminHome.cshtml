@@ -11,32 +11,21 @@
     <title></title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <script src="~/Scripts/ApproveLoans.js"></script>
+    <script type="text/javascript">
+       
+        $(document).ready(function () {
+            body = "Welcome " + sessionStorage.getItem("username");
+            $("#msg").append(body);
+        });
+    </script>
 
 
 
 </head>
+
 <body>
     <form id="form1">
-        <table style="font-family : Arial" width="1200">
-
-
-            <tr>
-
-                <td style="height:500px;background-color:#E6E6E6;width:650px">
-                    <h2>Admin Home</h2>
-                   
-
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="background-color:#BDBDBD;text-align:center">
-                    <b>website footer</b>
-                </td>
-            </tr>
-
-
-        </table>
+        <h2 id="msg"></h2>
 
 
     </form>

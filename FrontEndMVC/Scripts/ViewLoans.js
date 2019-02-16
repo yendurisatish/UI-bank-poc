@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     jQuery.support.cors = true;
   
-    $("#btn").click(function () {
+    
         jQuery.support.cors = true;
         $.ajax({
 
@@ -53,7 +53,7 @@
 
         });
 
-    });
+    
     
 
 });
