@@ -14,6 +14,10 @@ namespace FrontEndMVC.Controllers
         {
             return View();
         }
+        public ActionResult Update()
+        {
+            return View();
+        }
         public ActionResult AdminHome()
         {
             return View();
