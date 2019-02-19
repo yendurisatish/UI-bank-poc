@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
 
-    
+
 
     $.ajax({
 
@@ -53,7 +53,7 @@
                 body += "<td>" + bal + "</td>";
                 body += "<td>" + address + "</td>";
                 //body += "<td>" + admin + "</td>";
-                body += "<td>" + "<input type='button' id='" + accountno + "' onclick='CallMe(" + v.AccountNumber+ ")' value='Delete'>" + "</td>" ;
+                body += "<td>" + "<input type='button' id='" + accountno + "' onclick='CallMe(" + v.AccountNumber + ")' value='Delete'>" + "</td>";
                 body += "</tr>";
                 $("#tb1 tbody").append(body);
 
@@ -63,7 +63,7 @@
 
             });
             $("#tb1").DataTable();
-            
+
         },
 
         error: function (e) {
@@ -74,7 +74,7 @@
 
     });
 
-   
+
 
 
 
