@@ -11,6 +11,48 @@
     <title></title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+    <script type="text/javascript">
+        function CallMe(id) {
+            if (confirm("Are you sure to approve deposit of id: " + id)) {
+                jQuery.support.cors = true;
+
+               // var depositid = $('#depositid').val();
+
+
+
+
+
+                $.ajax({
+
+                    url: "http://localhost:64294/api/admin/approvedeposits?id=" + id + "&&acc=" + sessionStorage.getItem("accountno"),
+
+                    type: "POST",
+
+                    ContentType: "application/json",
+
+                    dataType: "json",
+
+                    
+
+                    success: function (resultdata) {
+
+                        alert("deposit approved successfully");
+                        window.location.href = "http://localhost:55773/Admin/ApproveDeposits";
+
+                    },
+
+                    error: function (e) {
+
+                        alert(JSON.stringify(e));
+
+                    }
+
+                });
+            }
+            // alert(data);
+        }
+    </script>
+
     <script src="~/Scripts/ApproveDeposits.js"></script>
     <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
@@ -31,6 +73,7 @@
                     <th>Duration</th>
                     <th>Approval</th>
                     <th>Approved Time</th>
+                    <th>action</th>
                 </tr>
             </thead>
 

@@ -32,6 +32,7 @@
                     body += "<td>" + amount + "</td>";
                     body += "<td>" + approval + "</td>";
                     body += "<td>" + approvedTime + "</td>";
+                    body += "<td>" + "<input type='button' id='" + id + "' onclick='CallMe(" + v.LoanId + ")' value='Approve'>" + "</td>";
                     body += "</tr>";
                     $("#tb1 tbody").append(body);
 

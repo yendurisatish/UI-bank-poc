@@ -35,6 +35,7 @@ $(document).ready(function () {
                     body += "<td>" + duration + "</td>";
                     body += "<td>" + approval + "</td>";
                     body += "<td>" + depositTime + "</td>";
+                    body += "<td>" + "<input type='button' id='" + id + "' onclick='CallMe(" + v.DepositId + ")' value='Approve'>" + "</td>";
                     body += "</tr>";
                     $("#tb1 tbody").append(body);
 
