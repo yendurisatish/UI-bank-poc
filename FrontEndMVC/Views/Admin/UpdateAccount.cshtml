@@ -14,12 +14,104 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
     <script type="text/javascript">
-        function CallMe(data) {
-            if (confirm("Are you sure to delete the user of account number "+data))
-            {
+        function CallMe(accno) {
+            $.ajax({
+                url: 'http://localhost:64294/api/user/getuserdetails?accountNumber=' + accno,
+                contentType: 'application/json;charset=utf-8',
 
-            }
-           // alert(data);
+                method: 'get',
+                Accept: "application/json",
+                success: function (k, v) {
+                    //alert(JSON.stringify(v));
+
+                    $("#AccountNumber").val(accno);
+
+                    $("#FirstName").val(k.FirstName);
+                    $("#LastName").val(k.LastName);
+                   // $("#Dob").val(k.Dob);
+                    $("#PhoneNumber").val(k.PhoneNumber);
+                    $("#Email").val(k.Email);
+
+
+                  //  $("#Aadhar").val(k.Aadhar);
+                 //   $("#AccountType").val(k.AccountType);
+                    $("#Balance").val(k.Balance);
+
+                    $("#Address").val(k.Address);
+
+               //     $("#IsAdmin").val(k.IsAdmin);
+                    $('#myModal').modal('show');
+                    $('#btnUpdate').show();
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+
+
+
+        }
+        function Update()
+        {
+            jQuery.support.cors = true;
+
+            var accno = $("#AccountNumber").val();
+            //var username = $("#username").val();
+
+            var firstname = $("#FirstName").val();
+            var lastname = $("#LastName").val();
+           // var dob = $("#dob").val();
+            var phoneno = $("#PhoneNumber").val();
+            var email = $("#Email").val();
+
+
+           // var aadhar = $("#aadhar").val();
+           // var acctype = $("#account_type").val();
+            var balance = $("#Balance").val();
+
+            var address = $("#Address").val();
+
+          //  var isadmin = $("#Isadmin").val();
+
+
+
+
+
+            $.ajax({
+
+                url: "http://localhost:64294/api/admin/updateaccount",
+
+                type: "POST",
+
+                ContentType: "application/json",
+
+                dataType: "json",
+
+                data: '{"AccountNumber":"' + accno + '","FirstName":"' + firstname + '","LastName":"' + lastname +  '","PhoneNumber":"' + phoneno + '","Email":"' + email +  '","Balance":"' + balance + '","Address":"' + address +  ' "}',
+
+                success: function (resultdata) {
+
+                   // loadData();
+                    $('#myModal').modal('hide');
+                    $('#AccountNumber').val("");
+                    $('#FirstName').val("");
+                    $('#LastName').val("");
+                    $('#PhoneNumber').val("");
+                    $('#Email').val("");
+                    $('#Balance').val("");
+                    $('#Address').val("");
+                     alert("Updated successfully");
+                    window.location.href = "http://localhost:55773/Admin/UpdateAccount"
+
+                },
+
+                error: function (e) {
+
+                    alert(JSON.stringify(e));
+
+                }
+
+            });
         }
     </script>
     <script src="~/Scripts/Update.js"></script>
@@ -29,10 +121,10 @@
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
 
-
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </head>
 <body>
-    <form id="form1">
+    
 
         <table id="tb1" border="1" align="center"  >
             <thead>
@@ -60,6 +152,59 @@
         @*<input type="button" id="btn" value="GetUsers" />*@
 
 
-    </form>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">×</span></button>*@
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 class="modal-title" id="myModalLabel">Update Account Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="AccountNumber">AccountNumber</label>
+                                <input type="text" class="form-control" id="AccountNumber" placeholder="AccountNumber" disabled="disabled" />
+                            </div>
+                            <div class="form-group">
+                                <label for="FirstName">FirstName</label>
+                                <input type="text" class="form-control" id="FirstName" placeholder="FirstName" />
+                            </div>
+                            <div class="form-group">
+                                <label for="LastName">LastName</label>
+                                <input type="text" class="form-control" id="LastName" placeholder="LastName" />
+                            </div>
+                           
+                            <div class="form-group">
+                                <label for="PhoneNumber">PhoneNumber</label>
+                                <input type="text" class="form-control" id="PhoneNumber" placeholder="PhoneNumber" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="text" class="form-control" id="Email" placeholder="Email" />
+                            </div>
+                           
+                           
+                            <div class="form-group">
+                                <label for="Balance">Balance</label>
+                                <input type="text" class="form-control" id="Balance" placeholder="Balance" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Address">Address</label>
+                                <input type="text" class="form-control" id="Address" placeholder="Address" />
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                    @*  <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>*@
+                        <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();" >Update</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
 </body>
 
