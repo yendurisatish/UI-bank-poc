@@ -5,7 +5,7 @@ $(document).ready(function () {
 
         $.ajax({
 
-            url: "http://localhost:64294/api/admin/getdeposits",
+            url: "http://localhost:64294/api/admin/GetUnApprovedDeposits",
 
             type: "GET",
             crossDomain: true,
@@ -34,7 +34,7 @@ $(document).ready(function () {
                     body += "<td>" + amount + "</td>";
                     body += "<td>" + duration + "</td>";
                     body += "<td>" + approval + "</td>";
-                    body += "<td>" + depositTime + "</td>";
+                   
                     body += "<td>" + "<input type='button' id='" + id + "' onclick='CallMe(" + v.DepositId + ")' value='Approve'>" + "</td>";
                     body += "</tr>";
                     $("#tb1 tbody").append(body);
@@ -58,40 +58,5 @@ $(document).ready(function () {
         });
 
     });
-    $("#approve").click(function () {
-        jQuery.support.cors = true;
-
-        var depositid = $('#depositid').val();
-
-
-
-
-
-        $.ajax({
-
-            url: "http://localhost:64294/api/admin/approvedeposits",
-
-            type: "POST",
-
-            ContentType: "application/json",
-
-            dataType: "json",
-
-            data: depositid,
-
-            Success: function (resultdata) {
-
-                alert("Inserted successfully");
-
-            },
-
-            error: function (e) {
-
-                alert(JSON.stringify(e));
-
-            }
-
-        });
-
-    });
+    
 //});
