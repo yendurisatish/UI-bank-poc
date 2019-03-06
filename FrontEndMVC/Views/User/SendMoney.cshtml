@@ -7,30 +7,67 @@
 <!DOCTYPE html>
 <head>
     <title></title>
+    @*<style type="text/css">
+        label.error {
+            color: red;
+        }
+    </style>*@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>*@
     @*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
 
     <script src="~/Scripts/SendMoney.js"></script>
 </head>
-<h2>Send Money</h2>
+@*<h2>Send Money</h2>*@
+@*<table align="center">
+        <tr>
+            <td>Enter account number to transfer :</td>
+            <td><input id="receiver" type="text" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
 
-<table>
-    <tr>
-        <td>Enter account number to transfer :</td>
-        <td><input id="receiver" type="text" /></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-   
-    <tr>
-        <td>Enter amount to transfer :</td>
-        <td><input id="amount" type="text" /></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td><button type="button" id="submit">Transfer</button></td>
-    </tr>
-</table>
+        <tr>
+            <td>Enter amount to transfer :</td>
+            <td><input id="amount" type="text" style="margin-bottom:10px" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><button type="button" id="submit">Transfer</button></td>
+        </tr>
+    </table>*@
 
+<body>
+    <form id="SendMoney">
+        @*<h2>ApplyDeposits</h2>*@
+        <table align="center">
+            <tr>
+                <td align="left">
+                    <table width="500px" align="right" class="">
+                        <tr>
+                            <td>Enter account number to transfer :</td>
+                            <td>
+                                <input type="text" id="receiver" name="txtreceiver" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Enter amount to transfer :</td>
+                            <td>
+                                <input type="text" id="amount" name="txtamount" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" id="submit" value="Transfer">
+                            </td>
+                        </tr>
+                    </table>
+                <td align="center"></td>
+            </tr>
+        </table>
+    </form>
+</body>

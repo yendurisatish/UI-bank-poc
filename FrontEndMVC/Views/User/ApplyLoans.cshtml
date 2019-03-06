@@ -2,227 +2,174 @@
 @{
     ViewBag.Title = "ApplyLoans";
     Layout = "~/Views/Shared/User.cshtml";
-   
-  //var loantype=  new List<SelectListItem>
-  //  {
-  //      new SelectListItem { Selected = true, Text = string.Empty, Value = ""},
-  //      new SelectListItem { Selected = false, Text = "Personal Loan", Value = "Personal Loan"},
-  //      new SelectListItem { Selected = false, Text = "Home Loan", Value = "Home Loan"},
-  //       new SelectListItem { Selected = false, Text = "Car Loan", Value = "Car Loan"},
-  //      new SelectListItem { Selected = false, Text = "Mortgage loan", Value = "Mortgage loan"},
-  //  };
-  //var emptype = new List<SelectListItem>
-  //  {
-  //      new SelectListItem { Selected = true, Text = string.Empty, Value = ""},
-  //      new SelectListItem { Selected = false, Text = "Salaried", Value = "Salaried"},
-  //      new SelectListItem { Selected = false, Text = "SelfEmployed", Value = "SelfEmployed"},
-         
-  //  };
-    
+
+    //var loantype=  new List<SelectListItem>
+    //  {
+    //      new SelectListItem { Selected = true, Text = string.Empty, Value = ""},
+    //      new SelectListItem { Selected = false, Text = "Personal Loan", Value = "Personal Loan"},
+    //      new SelectListItem { Selected = false, Text = "Home Loan", Value = "Home Loan"},
+    //       new SelectListItem { Selected = false, Text = "Car Loan", Value = "Car Loan"},
+    //      new SelectListItem { Selected = false, Text = "Mortgage loan", Value = "Mortgage loan"},
+    //  };
+    //var emptype = new List<SelectListItem>
+    //  {
+    //      new SelectListItem { Selected = true, Text = string.Empty, Value = ""},
+    //      new SelectListItem { Selected = false, Text = "Salaried", Value = "Salaried"},
+    //      new SelectListItem { Selected = false, Text = "SelfEmployed", Value = "SelfEmployed"},
+
+    //  };
+
 }
 <!DOCTYPE html>
 <head>
     <title></title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- <script>
-     $(document).ready(function () {
+    <style type="text/css">
+        label.error {
+            color: red;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#ApplyLoanFm").validate({
+                rules: {
+                    loan_type: "required",
+                    Emp_type: "required",
+                    txtIncome: "required",
+                    txtCity: "required",
+                    txtLoanAmount: "required",
+                },
+                messages: {
+                    loan_type: {
+                        required: "This field is required.",
+                    },
+                    Emp_type: "This field is required.",
+                    txtIncome: "This field is required.",
+                    txtCity: "This field is required.",
+                    txtLoanAmount: "This field is required.",
+                },
+                submitHandler: function (form) {
+                    jQuery.support.cors = true;
 
-         
-         $("#btnApply").click(function () {
-             jQuery.support.cors = true;
 
-             var loantype = $("#loan_type").val();
+                    var loantype = $("#loan_type").val();
 
-             var Emptype = $("#Emp_type").val();
-             var Income = $("#txtIncome").val();
-             var City = $("#txtCity").val();
-             var LoanAmount = $("#txtLoanAmount").val();
-             
-             //var payslip = $("#payslip").val();
-             
-            
-             //var photo = $("#photo").val();
+                    var Emptype = $("#Emp_type").val();
+                    var Income = $("#txtIncome").val();
+                    var City = $("#txtCity").val();
+                    var LoanAmount = $("#txtLoanAmount").val();
 
-             //var signature = $("#signature").val();
+                    //var payslip = $("#payslip").val();
 
-           
+
+                    //var photo = $("#photo").val();
+
+                    //var signature = $("#signature").val();
 
 
 
 
 
-             $.ajax({
 
-                 url: "http://localhost:64294/api/user/applyLoan",
 
-                 type: "POST",
+                    $.ajax({
 
-                 contentType: "application/json; charset=utf-8",
+                        url: "http://localhost:64294/api/user/applyLoan",
 
-                 dataType: "text",
+                        type: "POST",
 
-                 data:'{"AccountNumber":"' + sessionStorage.getItem("accountno") + '","LoanType":"' + loantype + '","Income":"' + Income + '","LoanAmount":"' + LoanAmount + '","EmpType":"' + Emptype + '","City":"' + City + ' "}',
+                        contentType: "application/json; charset=utf-8",
 
-                 success: function (resultdata) {
+                        dataType: "text",
 
-                     console.log(resultdata);
-                     alert("loan applied successfully");
+                        data: '{"AccountNumber":"' + sessionStorage.getItem("accountno") + '","LoanType":"' + loantype + '","Income":"' + Income + '","LoanAmount":"' + LoanAmount + '","EmpType":"' + Emptype + '","City":"' + City + ' "}',
 
-                 },
+                        success: function (resultdata) {
 
-                 error: function (e) {
+                            console.log(resultdata);
+                            alert("loan applied successfully");
+                            window.location.href = "http://localhost:55773/User/ApplyLoans"
 
-                     alert(JSON.stringify(e));
+                        },
 
-                 }
+                        error: function (e) {
 
-             });
-            
+                            alert(JSON.stringify(e));
 
-         });
+                        }
+
+                    });
+                }
+
+            });
+        });
         // $("#myModal").modal({ "backdrop": "static" });
-     });
- </script>
+        $("#btnApply").click(function () {
+
+        });
+    </script>
 </head>
 <body>
-@*<form id="ApplyLoanFm">*@
-<h2>ApplyLoans</h2>
+    <form id="ApplyLoanFm">
 
-    <table style="width:100%;">
-        <tr>
-            <td class="auto-style2"> Loan Type :</td>
-            <td class="auto-style2">
-               @* @Html.DropDownList("LoanType", loantype, new { @style = "margin-bottom:10px" })*@
-                <select name="LoanType" id="loan_type" style="margin-bottom:10px">
-                    <option value="Personal Loan">Personal Loan</option>
-                    <option value="Home Loan">Home Loan</option>
-                    <option value="Car Loan">Car Loan</option>
-                    <option value="Mortgage loan">Mortgage Loan</option>
-                </select>
-            </td>
-            <td class="auto-style2"></td>
-        </tr>
-        <tr>
-            <td class="auto-style2">Employment Type :</td>
-            <td class="auto-style2">
-                @*@Html.DropDownList("EmpType", emptype, new { @style = "margin-bottom:10px" })*@
-                <select name="Emptype" id="Emp_type" style="margin-bottom:10px">
-                    <option value="Salaried">Salaried</option>
-                    <option value="SelfEmployed">SelfEmployed</option>
-                    
-                </select>
-            </td>
-            <td class="auto-style2">&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="auto-style2"> Income per month :</td>
-            <td class="auto-style2">
-                <input name="Income" id="txtIncome" type="number" style="margin-bottom:10px" />
-               @* @Html.TextArea("Income", null, new { @style = "margin-bottom:10px" })*@
-            </td>
-            <td class="auto-style2"></td>
-        </tr>
-        <tr>
-            <td class="auto-style2">City :</td>
-            <td class="auto-style2">
-              @*  @Html.TextArea("City", null, new { @style = "margin-bottom:10px" })*@
-                <input id="txtCity" type="text" style="margin-bottom:10px" />
-            </td>
-            <td class="auto-style2"></td>
-        </tr>
-        <tr>
-            <td class="auto-style2">Loan Amount :</td>
-            <td class="auto-style2">
-              @*  @Html.TextArea("LoanAmount", null, new { @style = "margin-bottom:10px" })*@
-                 <input name="LoanAmount" id="txtLoanAmount" type="number" style="margin-bottom:10px" />
-            </td>
-            <td class="auto-style2"></td>
-        </tr>
-        @*<tr>
-        <td class="auto-style2">Upload income declaring certificate (payslip) :</td>
-        <td class="auto-style2">
-            <input name="Payslip" id="payslip" type="file" style="margin-bottom:10px" />
-        </td>
-        <td class="auto-style2"></td>
-    </tr>
-    <tr>
-        <td class="auto-style2">Upload Photograph :</td>
-        <td class="auto-style2">
-            <input name="Photo" id="photo" type="file" style="margin-bottom:10px" />
-        </td>
-        <td class="auto-style2"></td>
-    </tr>
-    <tr>
-        <td class="auto-style2">Upload Signature :</td>
-        <td class="auto-style2">
-            <input name="Signature" id="signature" type="file" style="margin-bottom:10px"/>
+        @*<h2>Apply Loans</h2>*@
+        <table align="center">
+            <tr>
+                <td align="left">
+                    <table width="500px" align="right" class="">
+                        <tr>
+                            <td>Loan Type :</td>
+                            <td>
+                                <select name="loan_type" id="loan_type" class="required" style="margin-bottom:10px">
+                                    <option value="">None</option>
+                                    <option value="Personal Loan">Personal Loan</option>
+                                    <option value="Home Loan">Home Loan</option>
+                                    <option value="Car Loan">Car Loan</option>
+                                    <option value="Mortgage loan">Mortgage Loan</option>
+                                </select>
+                            </td>
+                        </tr>
 
-        </td>
-        <td class="auto-style2"></td>
-    </tr>
-*@
-        @*<tr>
-            <td class="auto-style2">&nbsp;</td>
-            <td class="auto-style2">
-                <button type="button" data-toggle="modal" data-target="#myModal" style="margin-bottom:10px">Upload Documents</button>
-            </td>
-        </tr>*@
-        <tr>
-            <td class="auto-style2">&nbsp;</td>
-            <td class="auto-style2">
-                <button type="button" id="btnApply">Apply</button>
-            </td>
-        </tr>
-    </table>
-    @*<script>
-        window.onload = function () {
-            document.getElementById("upload").onclick = function () { $('#myModal').modal('show'); }
-        }</script>*@
-@*</form>*@
-    @*<form action="/User/Upload" method="post" enctype="multipart/form-data">
-        <label for="payslip">Payslip:</label>
-        <input type="file" name="payslip" id="payslip"/>
-        <input type="submit" value="Upload"/>
-        <label id="payslip" style="display: none;" />
-    </form>*@
+                        <tr>
+                            <td>Employment Type :</td>
+                            <td>
+                                <select name="Emp_type" id="Emp_type" style="margin-bottom:10px" class="required">
+                                    <option value="">None</option>
+                                    <option value="Salaried">Salaried</option>
+                                    <option value="SelfEmployed">SelfEmployed</option>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">×</span></button>*@
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Upload documents here</h4>
-                </div>
-                <form action="/User/Upload" method="post" enctype="multipart/form-data">
-                    <div class="modal-body">
+                                </select>
+                            </td>
+                        </tr>
 
-                        <div class="form-group">
-                            <label for="payslip">Payslip</label>
-                            <input type="file" class="form-control" name="payslip" id="payslip" placeholder="payslip" />
-                        </div>
-                        <div class="form-group">
-                            <label for="photo">Photo</label>
-                            <input type="file" class="form-control" id="photo" placeholder="Photo" />
-                        </div>
-                        <div class="form-group">
-                            <label for="signature">Signature</label>
-                            <input type="file" class="form-control" id="signature" placeholder="Signature" />
-                        </div>
-
-
-
-
-                    </div>
-                    <div class="modal-footer">
-                        @*  <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>*@
-                        @* <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>*@
-                        <input type="submit" value="Upload" class="btn btn-primary" />
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+                        <tr>
+                            <td>Income per month:</td>
+                            <td>
+                                <input type="text" id="txtIncome" name="txtIncome" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>City:</td>
+                            <td>
+                                <input type="text" id="txtCity" name="txtCity" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Loan Amount:</td>
+                            <td>
+                                <input type="text" id="txtLoanAmount" name="txtLoanAmount" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" id="btnApply" value="submit">
+                            </td>
+                        </tr>
+                    </table>
+                <td align="center"></td>
+            </tr>
+        </table>
+    </form>
 </body>

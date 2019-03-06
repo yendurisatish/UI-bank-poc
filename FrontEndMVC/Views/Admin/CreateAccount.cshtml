@@ -5,119 +5,136 @@
 
 <head>
     <title></title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style type="text/css">
+        label.error {
+            color: red;
+        }
+    </style>
 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Bootstrap DatePicker -->
     <script src="~/Scripts/CreateAccount.js"></script>
+    @*<script type="text/javascript">
+            $(function () {
+                $('#txtdob').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    format: "dd/mm/yyyy",
+                });
+            });
+        </script>*@
+
 </head>
 <body>
-    <form id="form1">
-        <h2>Create Account</h2>
-        <table style="width:100%;">
+    <form id="Createform">
+        @*<h2>Create Account</h2>*@
+        <table align="center">
             <tr>
-                <td class="auto-style2">Username:</td>
-                <td class="auto-style2">
-                    <input id="username" type="text" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2"></td>
-            </tr>
-            <tr>
-                <td class="auto-style2">First name:</td>
-                <td class="auto-style2">
-                    <input id="firstname" type="text" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">Last name:</td>
-                <td class="auto-style2">
-                    <input id="lastname" type="text" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2"></td>
-            </tr>
-            <tr>
-                <td class="auto-style2">Date of birth:(dd/mm/yyyy)</td>
-                <td class="auto-style2">
-                    <input id="dob" type="text" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2"></td>
-            </tr>
-            <tr>
-                <td class="auto-style2">phone number:</td>
-                <td class="auto-style2">
-                    <input id="phoneno" type="number" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2"></td>
-            </tr>
-            <tr>
-                <td class="auto-style2">email:</td>
-                <td class="auto-style2">
-                    <input id="email" type="text" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2"></td>
-            </tr>
-            <tr>
-                <td class="auto-style2">password:</td>
-                <td class="auto-style2">
-                    <input id="password" type="password" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">confirm password:</td>
-                <td class="auto-style2">
-                    <input id="cpassword" type="password" style="margin-bottom:10px" />
-                </td>
-                <td class="auto-style2">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">aadhar number:</td>
-                <td class="auto-style2">
-                    <input id="aadhar" type="number" style="margin-bottom:10px" />
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">account type:</td>
-                <td class="auto-style2">
-                    <select id="account_type" style="margin-bottom:10px">
-                        <option value="savings">savings</option>
-                        <option value="current">current</option>
-                    </select>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">balance:</td>
-                <td class="auto-style2">
-                    <input id="balance" type="number" style="margin-bottom:10px" />
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">address:</td>
-                <td class="auto-style2">
-                    <input id="address" type="text" style="margin-bottom:10px" />
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">Is Admin(yes/no : 1/0):</td>
-                <td class="auto-style2">
-                    <select id="Isadmin" style="margin-bottom:15px">
-                        <option value="true">yes</option>
-                        <option value="false">no</option>
-                    </select>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style2">
-                    <button type="button" id="submit">Submit</button>
-                </td>
+                <td align="left">
+                    <table width="500px" align="right" class="">
+                        <tr>
+                            <td>Username:</td>
+                            <td>
+                                <input type="text" id="txtusername" name="username" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>First Name:</td>
+                            <td>
+                                <input type="text" id="txtfirstName" name="firstName" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Last Name:</td>
+                            <td>
+                                <input type="text" id="txtlastname" name="lastname" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date of birth:(dd/mm/yyyy):</td>
+                            <td>
+                                <input type="text" id="txtdob" name="dob" autocomplete="off" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number:</td>
+                            <td>
+                                <input type="text" id="txtphone" name="phone" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email Address:</td>
+                            <td>
+                                <input type="text" id="txtemailid" name="emailid" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td>
+                                <input type="password" id="password" name="password" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Confirm Password:</td>
+                            <td>
+                                <input type="password" id="cpassword" name="cpassword" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>aadhar number:</td>
+                            <td>
+                                <input type="text" id="txtadharno" name="adharno" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>account type:</td>
+                            <td>
+                                <select id="drpdwnaccount_type" name="account_type" style="margin-bottom:10px">
+                                    *
+                                    <option value="">None</option>
+                                    <option value="savings">savings</option>
+                                    <option value="current">current</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>balance:</td>
+                            <td>
+                                <input type="text" id="txtbalance" name="balance" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>address:</td>
+                            <td>
+                                <input type="text" id="txtaddress" name="address" style="margin-bottom:10px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Is Admin(yes/no : 1/0):</td>
+                            <td>
+                                <select id="drpisadmin" name="isadmin" style="margin-bottom:10px">
+                                    *
+                                    <option value="">None</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" id="btnsubmit" value="submit">
+                            </td>
+                        </tr>
+
+                    </table>
+                <td align="center"></td>
             </tr>
         </table>
-
-
     </form>
 </body>
